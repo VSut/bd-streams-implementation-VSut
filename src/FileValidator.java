@@ -106,7 +106,7 @@ public class FileValidator {
      * @return Created stream.
      */
     public Stream<String> createStream(List<String> files) {
-        return null;
+        return files.stream();
     }
 
     /**
@@ -116,7 +116,7 @@ public class FileValidator {
      * @return Processed stream.
      */
     public Stream<String> makeLowerCaseStream(Stream<String> stream) {
-        return stream;
+        return stream.map(String::toLowerCase);
     }
 
     /**
@@ -126,7 +126,7 @@ public class FileValidator {
      * @return Processed stream.
      */
     public Stream<String> removeDraftFilesStream(Stream<String> stream) {
-        return stream;
+        return stream.filter(file -> !file.contains("draft"));
     }
 
     /**
@@ -136,7 +136,7 @@ public class FileValidator {
      * @return Processed stream.
      */
     public Stream<String> removeHiddenFilesStream(Stream<String> stream) {
-        return stream;
+        return stream.filter(file -> file.charAt(0) != '.');
     }
 
     /**
@@ -146,7 +146,7 @@ public class FileValidator {
      * @return Processed stream.
      */
     public Stream<String> sortListStream(Stream<String> stream) {
-        return stream;
+        return stream.sorted();
     }
 
     /**
@@ -156,7 +156,7 @@ public class FileValidator {
      * @return List of results.
      */
     public List<String> collectStreamResults(Stream<String> stream) {
-        return null;
+        return stream.toList();
     }
 
 }
